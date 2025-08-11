@@ -1,7 +1,9 @@
+import HeroBanner from "../../components/HeroBanner";
+
 function LandingPage() {
     return (
         <div>
-            <h1>Landing Page</h1>
+            <HeroBanner />
         </div>
     )
 }

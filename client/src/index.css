@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import "tailwindcss";
 
 /* Tailwind v4 Theme Configuration */
@@ -83,11 +84,12 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-warm-50 to-warm-100 text-warm-950 font-sans;
+    background-color: black;
+    font-color: white;
   }
-  
   html {
     scroll-behavior: smooth;
+    font-family: 'Luckiest Guy', cursive;
   }
 }
 
@@ -95,7 +97,7 @@
 @layer components {
   /* Button Components */
   .btn-primary {
-    @apply bg-[var(--gradient-fire)] text-white font-semibold py-3 px-6 rounded-full 
+    @apply bg-fire-600 text-white font-semibold py-3 px-6 rounded-full 
            shadow-[var(--shadow-fire)] hover:shadow-lg transform hover:scale-105 
            transition-all duration-300 active:scale-95 border-0;
   }

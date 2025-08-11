@@ -1,10 +1,12 @@
 import { Outlet } from "react-router";
+import PublicNavBar from "../components/PublicNavBar";
 
 function PublicLayout() {
     return (
-        <div className="bg-fire-500">
+        <>
+            <PublicNavBar />
             <Outlet />
-        </div>
+        </>
     )
 }
 
