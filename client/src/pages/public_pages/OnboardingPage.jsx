@@ -111,7 +111,7 @@ const OnboardingPage = ({ onComplete, onSkip, userName = "Traveler" }) => {
     const handleComplete = (action) => {
         trackEvent('onboarding_completed', { final_action: action });
         setIsPlaying(false);
-        onComplete?.(action);
+        navigate('/solo-adventure-dashboard');
     };
 
     const togglePlayPause = () => {

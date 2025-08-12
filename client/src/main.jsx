@@ -8,6 +8,7 @@ import Login from './pages/public_pages/LoginPage'
 import PublicLayout from './layouts/PublicLayout'
 import RegistrationPage from './pages/public_pages/RegisterPage'
 import OnboardingPage from './pages/public_pages/OnboardingPage'
+import SoloAdventureDashboard from './pages/protected_pages/SoloAdventureDashboard'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,6 +22,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="/onboarding" element={<OnboardingPage />} />
         </Route>
         
+        {/* Protected Routes */}
+        <Route element={<PublicLayout />}>
+          <Route path="/solo-adventure-dashboard" element={<SoloAdventureDashboard />} />
+        </Route>
 
 
       </Routes>
