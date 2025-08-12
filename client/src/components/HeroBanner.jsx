@@ -1,31 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Play, Zap, Target, TrendingUp, Users, Star, ChevronDown } from 'lucide-react';
 
 const HeroBanner = () => {
-  const [mounted, setMounted] = useState(false);
-  const [particlePositions, setParticlePositions] = useState([]);
   const heroRef = useRef(null);
   const { scrollY } = useScroll();
-  
-  // Parallax transforms
-  const backgroundY = useTransform(scrollY, [0, 1000], [0, -300]);
   const contentY = useTransform(scrollY, [0, 1000], [0, -150]);
-  const particleY = useTransform(scrollY, [0, 1000], [0, -200]);
-
-  // Generate random particles on mount
-  useEffect(() => {
-    setMounted(true);
-    const particles = Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 1,
-      duration: Math.random() * 10 + 10,
-      delay: Math.random() * 5,
-    }));
-    setParticlePositions(particles);
-  }, []);
 
   // Floating UI card data
   const floatingCards = [
@@ -124,64 +104,13 @@ const HeroBanner = () => {
     }
   };
 
-  if (!mounted) return null;
-
   return (
-    <section ref={heroRef} className="relative min-h-screen overflow-hidden">
-      
-      {/* Animated Background */}
-      <motion.div 
-        style={{ y: backgroundY }}
-        className="absolute inset-0"
-      >
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-fire-900/20 via-black to-fire-800/10" />
-        
-        {/* Animated Grid */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255, 69, 0, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 69, 0, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px',
-            animation: 'gridMove 20s linear infinite'
-          }}
-        />
-        
-        {/* Floating Particles */}
-        <motion.div style={{ y: particleY }} className="absolute inset-0">
-          {particlePositions.map((particle) => (
-            <motion.div
-              key={particle.id}
-              className="absolute w-1 h-1 bg-fire-400 rounded-full opacity-60"
-              style={{
-                left: `${particle.x}%`,
-                top: `${particle.y}%`,
-                width: `${particle.size}px`,
-                height: `${particle.size}px`,
-              }}
-              animate={{
-                y: [-20, 20, -20],
-                opacity: [0.3, 0.8, 0.3],
-                scale: [0.8, 1.2, 0.8],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                delay: particle.delay,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </motion.div>
-      </motion.div>
+    <div className="relative" ref={heroRef}>
 
       {/* Main Content */}
       <motion.div 
         style={{ y: contentY }}
-        className="relative z-10 flex items-center justify-center min-h-screen px-4 pt-20"
+        className="relative z-10 flex items-center justify-center min-h-screen px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
           
@@ -337,7 +266,7 @@ const HeroBanner = () => {
           100% { transform: translate(50px, 50px); }
         }
       `}</style>
-    </section>
+    </div>
   );
 };
 

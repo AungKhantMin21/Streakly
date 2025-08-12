@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import "tailwindcss";
 
+@keyframes gridMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 50px 50px;
+  }
+}
+
 /* Tailwind v4 Theme Configuration */
 @theme {
   /* Primary Fire Colors */
@@ -163,7 +172,7 @@
   .input-primary {
     @apply w-full px-4 py-3 rounded-xl border-2 border-warm-200 focus:border-fire-500 
            focus:ring-2 focus:ring-fire-500/20 focus:outline-none transition-all duration-200
-           bg-white text-warm-900 placeholder:text-warm-400;
+           bg-white text-white placeholder:text-warm-600;
   }
   
   /* Layout Components */

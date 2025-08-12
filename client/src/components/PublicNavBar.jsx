@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Flame, Zap, Trophy, Users } from 'lucide-react';
 import { useNavigate } from 'react-router';
 
 const PublicNavBar = () => {
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navItems = [
     { name: 'Features', href: '#features', icon: Zap },
@@ -70,11 +60,7 @@ const PublicNavBar = () => {
         variants={navVariants}
         initial="hidden"
         animate="visible"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-black/90 backdrop-blur-lg border-b border-fire-500/20 shadow-lg' 
-            : 'bg-transparent'
-        }`}
+        className={`top-0 left-0 w-full z-50 transition-all duration-300`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -85,6 +71,7 @@ const PublicNavBar = () => {
               initial="initial"
               whileHover="hover"
               className="flex items-center gap-3 cursor-pointer"
+              onClick={() => navigate('/')} 
             >
               <div className="relative">
                 <div className="text-4xl"><img src="/logo.png" alt="" className='w-16 h-16' /></div>
@@ -163,6 +150,9 @@ const PublicNavBar = () => {
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255, 69, 0, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary px-6 py-2 text-sm relative overflow-hidden group"
+                onClick={() => {
+                    navigate('/register');
+                }}
               >
                 <span className="relative z-10">Start Playing</span>
                 <motion.div
@@ -266,7 +256,10 @@ const PublicNavBar = () => {
                   <motion.button
                     variants={mobileItemVariants}
                     className="w-full btn-primary py-3 relative overflow-hidden group"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        navigate('/register');
+                    }}
                   >
                     <span className="relative z-10">Start Playing</span>
                     <motion.div
