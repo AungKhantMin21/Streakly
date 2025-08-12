@@ -16,8 +16,10 @@ import {
   Star,
   Check
 } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 const RegistrationPage = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -79,8 +81,7 @@ const RegistrationPage = () => {
   const handleSubmit = () => {
     if (selectedAvatar) {
       // Handle registration submission
-      console.log('Registration data:', { ...formData, avatar: selectedAvatar });
-      alert('Welcome to Streakly! Your quest begins now! 🔥');
+      navigate('/onboarding');
     }
   };
 

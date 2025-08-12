@@ -7,6 +7,7 @@ import LandingPage from './pages/public_pages/LandingPage'
 import Login from './pages/public_pages/LoginPage'
 import PublicLayout from './layouts/PublicLayout'
 import RegistrationPage from './pages/public_pages/RegisterPage'
+import OnboardingPage from './pages/public_pages/OnboardingPage'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
           <Route index element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/onboarding" element={<OnboardingPage />} />
         </Route>
         
 
